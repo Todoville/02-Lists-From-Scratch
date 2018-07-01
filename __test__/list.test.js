@@ -1,7 +1,7 @@
 'use strict';
 
 const List = require('../src/lib/list');
-
+ 
 describe('testing methods of List class', () => {
   let myList;
   beforeEach(() => {
@@ -21,7 +21,6 @@ describe('testing methods of List class', () => {
     expect(myList).toHaveLength(7);
     expect(myList[myList.length - 1]).toEqual(6);
     expect(myList.push(7, 8, 9)).toEqual(10);
-    console.log(myList, 'in PUSH');
   });
 
 
@@ -62,11 +61,14 @@ describe('testing methods of List class', () => {
     expect(sum).toEqual(25);
   });
   test('FOR EACH: should iterate over the elements in a list and apply a function to them', () => {
-    const eached = myList.forEach((this[i], i, this) => { 
-      this[i] * 2;
-      return undefined;
-    })
-      expect(eached[i]/2).toBe(eached[i])
-    );
-  })
+    const testList = new List();
+    testList.push(0, 2, 4, 6, 8, 10);
+    expect(myList.forEach((x => x * 2))).toEqual(testList);
+  });
+  test('FILTER: should return elements which match a given parameter', () => {
+    const filtered = myList.filter((x => x % 2 === 0));
+    const testList = new List();
+    testList.push(0, 2, 4);
+    expect(filtered).toEqual(testList);
+  });
 });

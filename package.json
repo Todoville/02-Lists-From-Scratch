@@ -1,10 +1,13 @@
 {
-  "name": "02-Lists-From-Scratch",
+  "name": "0-2-lists-from-scratch",
   "version": "1.0.0",
   "description": "![cf](https://i.imgur.com/7v5ASc8.png) 02: Tools and Context\r ======\r https://travis-ci.org/JudyVue/01-TDD.svg?branch=master\r ## Submission Instructions\r * Work in a fork of this repository\r * Work in a branch on your fork called `lab-02`\r * Set up your forked repo to run through Travis CI as demo'd today in class\r * Open a pull request to your forked repository\r * Submit on canvas a question and observation, how long you spent, and a link to your pull request",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "eslint . && jest --coverage",
+    "testWatch": "jest --coverage --watchAll",
+    "test-nolint": "jest --coverage",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -28,5 +31,6 @@
     "eslint-plugin-jest": "^21.17.0",
     "eslint-plugin-react": "^7.9.1",
     "jest": "^23.1.0"
-  }
+  },
+  "dependencies": {}
 }

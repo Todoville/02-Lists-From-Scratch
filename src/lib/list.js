@@ -22,7 +22,7 @@ const List = module.exports = class {
       throw new Error('List is empty ya ding dong');
     }
     const result = new List();
-    for (let i = 0; i <this.length; i++) {
+    for (let i = 0; i < this.length; i++) {
       result.push(callback(this[i], i));
     }
     return result;
@@ -49,14 +49,28 @@ const List = module.exports = class {
       throw new Error('Expected a function ya ding dong');
     }
     if (!this.length) {
-      return undefined;
+      throw new Error('Empty list my friendo');
     }
+    
     for (let i = 0; i < this.length; i++) {
-      callback(this[i], i, this);
+      this[i] = callback(this[i], i);
     }
-    return undefined;
+    return this;
   }
+  filter(callback) {
+    if (typeof callback !== 'function') {
+      throw new Error('Expected a function ya ding dong');
+    }
+    if (!this.length) {
+      throw new Error('Empty list my friendo');
+    }
+    const newList = new List();
 
-
-}
-
+    for (let i = 0; i < this.length; i++) {
+      if (callback(this[i], i)) {
+        newList.push(this[i]);
+      }
+    }
+    return newList;
+  }
+};
